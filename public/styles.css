@@ -1,0 +1,68 @@
+* {
+  font-family: 'Roboto';
+}
+
+.posts {
+  /* max-width: 50rem; */
+  max-height: 20rem;
+  overflow-y: scroll;
+}
+
+.postField {
+  text-decoration: underline;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+.getPost {
+  margin-top: 5px;
+  display: flex;
+}
+
+.postIdText {
+  margin-left: 10px !important;
+}
+
+.postIdText input {
+  padding: 0 1px !important;
+  height: 2rem;
+  width: fit-content;
+  max-width: 3rem;
+}
+
+.singlePost {
+  overflow-y: scroll;
+}
+
+.content {
+  border: 1px solid black;
+  margin-left: 201px;
+}
+
+.content span {
+  align-self: center;
+}
+
+.singleSearchbar {
+  padding: 15px;
+}
