@@ -15,10 +15,6 @@ function GetSinglePost() {
   const [newBody, setNewBody] = useState()
   const [response, setResponse] = useState()
 
-  useEffect(() => {
-    console.log(post)
-  }, [post])
-
   function openModal() {
     var modal = document.getElementById('myModal')
     var span = document.getElementsByClassName('close')[0]
@@ -52,6 +48,7 @@ function GetSinglePost() {
   }
   return (
     <div className="content">
+      <h1>Get/Update one post</h1>
       <Modal
         post={post}
         setPost={setPost}
@@ -66,7 +63,7 @@ function GetSinglePost() {
       {loading && <Loading />}
       {!error && post && (
         <div className="pcEditor">
-          {!response ? <PostCard post={post} /> : <PostCard post={post} />}
+          <PostCard post={post} />
           <Button id="myBtn" onClick={openModal}>
             EDIT
           </Button>

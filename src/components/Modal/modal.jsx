@@ -13,13 +13,7 @@ function Modal({
   response,
   setResponse,
 }) {
-  useEffect(() => {
-    console.log(newTitle)
-  }, [newTitle])
-
-  useEffect(() => {
-    console.log(newBody)
-  }, [newBody])
+  // DA AGGIUSTARE QUANDO SI FANNO RICERCHE MULTIPLE IN SERIE
 
   const handleSubmit = async () => {
     const { title, body } = post

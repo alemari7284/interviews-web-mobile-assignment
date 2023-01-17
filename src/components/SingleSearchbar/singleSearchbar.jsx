@@ -22,11 +22,7 @@ function SingleSearchbar({ getOne }) {
         label="Enter post ID"
         variant="outlined"
       />
-      <Button
-        className="searchButton"
-        variant="contained"
-        onClick={handleClick}
-      >
+      <Button className="myButton" variant="contained" onClick={handleClick}>
         <FontAwesomeIcon icon={faMagnifyingGlass} />
       </Button>
     </div>

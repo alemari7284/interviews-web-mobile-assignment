@@ -1,4 +1,5 @@
 import React from 'react'
+import DeleteButton from '../MyButton/DeleteButton'
 
 function PostCard({ post }) {
   return (

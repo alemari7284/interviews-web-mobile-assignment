@@ -1,5 +1,9 @@
 * {
-  font-family: 'Roboto';
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .posts {
@@ -76,8 +80,16 @@
   margin-left: 5px !important;
 }
 
-.searchButton svg {
+.myButton svg {
   height: 3em;
+}
+
+.deleteButton {
+  position: absolute;
+}
+
+.deleteButton svg {
+  height: 2em;
 }
 
 .loading {
@@ -86,6 +98,7 @@
 }
 
 .postCard {
+  position: relative;
   width: 16rem;
   height: 16rem;
   border-radius: 10px;
@@ -99,22 +112,20 @@
   padding: 1rem;
 }
 
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none;
+  position: fixed;
+  z-index: 2;
+  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal Content */
 .modalContent {
   background-color: #fefefe;
   margin: auto;
@@ -130,7 +141,6 @@
   margin: 10px 0 !important;
 }
 
-/* The Close Button */
 .close {
   color: #aaaaaa;
   float: right;
@@ -145,7 +155,6 @@
   cursor: pointer;
 }
 
-/* Animation */
 @keyframes modalOpen {
   from {
     opacity: 0;
@@ -153,4 +162,15 @@
   to {
     opacity: 1;
   }
+}
+
+.pagesList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 2em;
+}
+
+.pageNumber {
+  visibility: unset;
 }

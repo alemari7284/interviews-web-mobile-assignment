@@ -40,7 +40,7 @@ function Sidebar({ getMultiple, getOne, getOneAndUpdate }) {
       <button
         className="btn"
         id="button4"
-        onClick={() => setDeleteOne(!deleteOne)}
+        onClick={() => navigate('/deletepost')}
       >
         Delete one post
       </button>
