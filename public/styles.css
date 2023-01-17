@@ -21,7 +21,7 @@
   background-color: #f1f1f1;
 }
 
-button {
+.btn {
   width: 100%;
   padding: 12px;
   background-color: #4caf50;
@@ -30,7 +30,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.btn:hover {
   background-color: #3e8e41;
 }
 
@@ -40,7 +40,11 @@ button:hover {
 }
 
 .postIdText {
-  margin-left: 10px !important;
+  font-weight: bold;
+}
+
+.credits {
+  text-align: right;
 }
 
 .postIdText input {
@@ -50,19 +54,103 @@ button:hover {
   max-width: 3rem;
 }
 
-.singlePost {
-  overflow-y: scroll;
-}
-
 .content {
-  border: 1px solid black;
   margin-left: 201px;
 }
 
-.content span {
-  align-self: center;
+.pcEditor {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.pcEditor button {
+  margin-left: 1em;
 }
 
 .singleSearchbar {
   padding: 15px;
+}
+
+.searchButton {
+  margin-left: 5px !important;
+}
+
+.searchButton svg {
+  height: 3em;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+.postCard {
+  width: 16rem;
+  height: 16rem;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px gray;
+  background-color: rgb(232, 239, 241);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modalContent {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  animation-name: modalOpen;
+  animation-duration: 0.5s;
+}
+
+.modalTitle,
+.modalBody {
+  margin: 10px 0 !important;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

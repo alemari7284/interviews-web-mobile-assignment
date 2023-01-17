@@ -3,15 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import Button from '@mui/material/Button'
 import { TextField } from '@mui/material'
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 
 function SingleSearchbar({ getOne }) {
-  const element = <FontAwesomeIcon icon={faMagnifyingGlass} />
-
   const cmp = useRef()
 
   function handleClick() {
-    getOne(cmp.current.lastChild.firstChild.value)
+    const id = cmp.current.lastChild.firstChild.value
+    console.log(id)
+    getOne(id)
   }
 
   return (
@@ -22,8 +22,12 @@ function SingleSearchbar({ getOne }) {
         label="Enter post ID"
         variant="outlined"
       />
-      <Button variant="contained" onClick={handleClick}>
-        {element}
+      <Button
+        className="searchButton"
+        variant="contained"
+        onClick={handleClick}
+      >
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
       </Button>
     </div>
   )

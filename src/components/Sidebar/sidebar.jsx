@@ -1,25 +1,52 @@
 import React from 'react'
 import { useState } from 'react'
 import SingleSearchbar from '../SingleSearchbar/singleSearchbar'
+import { useNavigate } from 'react-router-dom'
 
-function Sidebar({ getMultiple, getOne }) {
+function Sidebar({ getMultiple, getOne, getOneAndUpdate }) {
   const [findOne, setFindOne] = useState(false)
+  const [showFindUpdate, setShowFindUpdate] = useState(false)
+  const [deleteOne, setDeleteOne] = useState(false)
+  const [createOne, setCreateOne] = useState(false)
+  let navigate = useNavigate()
 
   return (
     <div id="sidebar">
-      <button id="button1" onClick={getMultiple}>
+      <button
+        className="btn"
+        id="button1"
+        onClick={() => {
+          navigate('/')
+        }}
+      >
+        Home
+      </button>
+      <button
+        className="btn"
+        id="button1"
+        onClick={() => {
+          navigate('/getallposts')
+        }}
+      >
         Get multiple posts
       </button>
       <button
+        className="btn"
         id="button2"
-        onClick={() => {
-          setFindOne(!findOne)
-        }}
+        onClick={() => navigate('/getsinglepost')}
       >
         Get one post
       </button>
-      {findOne && <SingleSearchbar getOne={getOne} />}
-      <button id="button3">Delete one post</button>
+      <button className="btn" id="button3" onClick={() => navigate('/update')}>
+        Update one post
+      </button>
+      <button
+        className="btn"
+        id="button4"
+        onClick={() => setDeleteOne(!deleteOne)}
+      >
+        Delete one post
+      </button>
     </div>
   )
 }
