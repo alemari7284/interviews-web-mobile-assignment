@@ -13,12 +13,14 @@ function Modal({
   setResponse,
 }) {
   const handleSubmit = async () => {
+    // DA RIVEDERE!! non funziona il ternario
     const newObject = {
       userId: post.userId,
       id: post.id,
-      title: newTitle,
-      body: newBody,
+      title: newTitle ? newTitle : post.title,
+      body: newBody ? newBody : post.newBody,
     }
+    console.log(newObject)
 
     try {
       const result = await axios.put(
@@ -45,9 +47,7 @@ function Modal({
             variant="outlined"
             className="modalTitle"
             onChange={(e) => setNewTitle(e.currentTarget.value)}
-          >
-            {post.title}
-          </TextField>
+          />
         )}
         {post && (
           <TextField
@@ -58,11 +58,13 @@ function Modal({
             variant="outlined"
             className="modalBody"
             onChange={(e) => setNewBody(e.currentTarget.value)}
-          >
-            {post.body}
-          </TextField>
+          />
         )}
-        <Button variant="contained" onClick={handleSubmit}>
+        <Button
+          variant="contained"
+          onClick={handleSubmit}
+          disabled={!newTitle && !newBody}
+        >
           SUBMIT
         </Button>
         {response && <h4>Changes submitted successfully</h4>}
