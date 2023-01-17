@@ -5,13 +5,17 @@ import Button from '@mui/material/Button'
 import { TextField } from '@mui/material'
 import { useRef } from 'react'
 
-function SingleSearchbar({ getOne }) {
+function SingleSearchbar({ getOne, setError }) {
   const cmp = useRef()
 
   function handleClick() {
     const id = cmp.current.lastChild.firstChild.value
     console.log(id)
-    getOne(id)
+    if (id) {
+      getOne(id)
+    } else {
+      setError({ message: 'missing id' })
+    }
   }
 
   return (

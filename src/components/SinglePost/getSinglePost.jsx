@@ -15,6 +15,10 @@ function GetSinglePost() {
   const [newBody, setNewBody] = useState()
   const [response, setResponse] = useState()
 
+  useEffect(() => {
+    console.log(error)
+  }, [error])
+
   function openModal() {
     var modal = document.getElementById('myModal')
     var span = document.getElementsByClassName('close')[0]
@@ -59,7 +63,7 @@ function GetSinglePost() {
         response={response}
         setResponse={setResponse}
       />
-      <SingleSearchbar getOne={getOne} />
+      <SingleSearchbar getOne={getOne} setError={setError} />
       {loading && <Loading />}
       {!error && post && (
         <div className="pcEditor">
@@ -69,7 +73,7 @@ function GetSinglePost() {
           </Button>
         </div>
       )}
-      {error && <h1>No results</h1>}
+      {error && <h1>No results - {error.message}</h1>}
     </div>
   )
 }

@@ -50,10 +50,10 @@ function Delete() {
   return (
     <div className="content">
       <h1>Delete one post</h1>
-      <SingleSearchbar getOne={getOne} />
+      <SingleSearchbar getOne={getOne} setError={setError} />
       {loading && <Loading />}
       {post && post.title && <PostCard post={post} />}
-      {error && <h1>No results</h1>}
+      {error && <h1>No results - {error.message}</h1>}
       {post && post.title && (
         <Button onClick={deleteOne} className="myButton">
           <FontAwesomeIcon icon={faTrashCan} />
