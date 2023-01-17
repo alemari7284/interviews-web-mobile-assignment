@@ -35,10 +35,7 @@ function Sidebar({ getMultiple, getOne, getOneAndUpdate }) {
         id="button2"
         onClick={() => navigate('/getsinglepost')}
       >
-        Get one post
-      </button>
-      <button className="btn" id="button3" onClick={() => navigate('/update')}>
-        Update one post
+        Get/Update one post
       </button>
       <button
         className="btn"
