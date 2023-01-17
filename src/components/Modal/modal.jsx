@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { TextField } from '@mui/material'
 import { Button } from '@mui/material'
 import axios from 'axios'
 
 function Modal({
   post,
+  setPost,
   newTitle,
   setNewTitle,
   newBody,
@@ -12,20 +13,29 @@ function Modal({
   response,
   setResponse,
 }) {
+  useEffect(() => {
+    console.log(newTitle)
+  }, [newTitle])
+
+  useEffect(() => {
+    console.log(newBody)
+  }, [newBody])
+
   const handleSubmit = async () => {
-    // DA RIVEDERE!! non funziona il ternario
-    const newObject = {
-      userId: post.userId,
-      id: post.id,
-      title: newTitle ? newTitle : post.title,
-      body: newBody ? newBody : post.newBody,
+    const { title, body } = post
+
+    const object = {
+      ...post,
+      title: newTitle ? newTitle : title,
+      body: newBody ? newBody : body,
     }
-    console.log(newObject)
+    setPost(object)
 
     try {
+      console.log('sto dentro TRY', object)
       const result = await axios.put(
         `https://jsonplaceholder.typicode.com/posts/${post.id}`,
-        newObject,
+        object,
       )
       console.log(result)
       setResponse(result)

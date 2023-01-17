@@ -16,10 +16,8 @@ function GetSinglePost() {
   const [response, setResponse] = useState()
 
   useEffect(() => {
-    return () => {
-      setResponse()
-    }
-  }, [])
+    console.log(post)
+  }, [post])
 
   function openModal() {
     var modal = document.getElementById('myModal')
@@ -56,6 +54,7 @@ function GetSinglePost() {
     <div className="content">
       <Modal
         post={post}
+        setPost={setPost}
         newTitle={newTitle}
         setNewTitle={setNewTitle}
         newBody={newBody}
@@ -67,21 +66,7 @@ function GetSinglePost() {
       {loading && <Loading />}
       {!error && post && (
         <div className="pcEditor">
-          {!response ? (
-            <PostCard
-              userId={post.userId}
-              id={post.id}
-              title={post.title}
-              body={post.body}
-            />
-          ) : (
-            <PostCard
-              userId={post.userId}
-              id={post.id}
-              title={newTitle}
-              body={newBody}
-            />
-          )}
+          {!response ? <PostCard post={post} /> : <PostCard post={post} />}
           <Button id="myBtn" onClick={openModal}>
             EDIT
           </Button>
