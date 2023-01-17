@@ -1,21 +1,15 @@
 import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import PostCard from '../PostCard/postCard'
-import { Grid } from '@mui/material'
-import Loading from '../Loading/loading'
+import { Button } from '@mui/material'
 import { MAX_TILES } from '../../constants'
-import { Pagination } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 function GetAllPosts() {
-  const [loading, setLoading] = useState(false)
   const [posts, setPosts] = useState([])
   const [error, setError] = useState()
   const [matrix, setMatrix] = useState([])
-
-  useEffect(() => {
-    getMultiple()
-  }, [])
+  let navigate = useNavigate()
 
   useEffect(() => {
     if (posts.length > MAX_TILES) {
@@ -25,6 +19,9 @@ function GetAllPosts() {
 
   useEffect(() => {
     console.log(matrix)
+    !error &&
+      matrix.length > 0 &&
+      navigate('/getallposts/1', { state: { matrix, error, posts } })
   }, [matrix])
 
   function divideIntoPages() {
@@ -48,15 +45,17 @@ function GetAllPosts() {
     setMatrix(mat)
   }
 
+  function getHandler() {
+    getMultiple()
+  }
+
   async function getMultiple() {
-    setLoading(true)
     if (posts.length === 0) {
       try {
         const array = await axios.get(
           'https://jsonplaceholder.typicode.com/posts',
         )
         setPosts(array.data)
-        setLoading(false)
       } catch (error) {
         console.log(error)
         setError(error)
@@ -67,25 +66,9 @@ function GetAllPosts() {
   return (
     <div className="content">
       <h1>All Posts</h1>
-
-      {loading && <Loading />}
-      {!error ? (
-        <Grid container rowSpacing={2}>
-          {posts.length > 0 &&
-            posts.map((post, i) => {
-              return (
-                <Grid key={i} item xs={12} sm={8} md={6} lg={4} xl={3}>
-                  <PostCard post={posts[i]} />
-                </Grid>
-              )
-            })}
-        </Grid>
-      ) : (
-        <h1>No results</h1>
-      )}
-      <div>
-        <Pagination count={10} color="primary" />
-      </div>
+      <Button variant="contained" onClick={getHandler}>
+        GET
+      </Button>
     </div>
   )
 }

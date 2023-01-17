@@ -164,13 +164,8 @@
   }
 }
 
-.pagesList {
+.pagination {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 2em;
-}
-
-.pageNumber {
-  visibility: unset;
 }
