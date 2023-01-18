@@ -11,7 +11,7 @@ function Sidebar({ getMultiple, getOne, getOneAndUpdate }) {
   let navigate = useNavigate()
 
   return (
-    <div id="sidebar">
+    <div id="sidebar" className="sidebar">
       <button
         className="btn"
         id="button1"

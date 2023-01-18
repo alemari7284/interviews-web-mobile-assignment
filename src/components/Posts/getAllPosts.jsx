@@ -21,7 +21,7 @@ function GetAllPosts() {
     console.log(matrix)
     !error &&
       matrix.length > 0 &&
-      navigate('/getallposts/1', { state: { matrix, error, posts } })
+      navigate('/getallposts/1', { state: { matrix, error } })
   }, [matrix])
 
   function divideIntoPages() {

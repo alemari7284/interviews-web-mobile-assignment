@@ -13,7 +13,7 @@ function Modal({
   response,
   setResponse,
 }) {
-  // DA AGGIUSTARE QUANDO SI FANNO RICERCHE MULTIPLE IN SERIE
+  // FIX: DA AGGIUSTARE QUANDO SI FANNO RICERCHE MULTIPLE IN SERIE
 
   const handleSubmit = async () => {
     const { title, body } = post
@@ -26,7 +26,6 @@ function Modal({
     setPost(object)
 
     try {
-      console.log('sto dentro TRY', object)
       const result = await axios.put(
         `https://jsonplaceholder.typicode.com/posts/${post.id}`,
         object,
