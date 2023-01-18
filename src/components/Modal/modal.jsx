@@ -13,7 +13,7 @@ function Modal({
   response,
   setResponse,
 }) {
-  // FIX: DA AGGIUSTARE QUANDO SI FANNO RICERCHE MULTIPLE IN SERIE
+  // FIX: DA AGGIUSTARE QUANDO SI FANNO MODIFICHE MULTIPLE IN SERIE
 
   const handleSubmit = async () => {
     const { title, body } = post

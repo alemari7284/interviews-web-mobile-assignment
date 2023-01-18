@@ -8,9 +8,6 @@ function CommentsCard({ data }) {
         postID: <span style={{ fontWeight: 'lighter' }}>#{postId}</span>
       </span>
       <span style={{ fontWeight: 'bold' }}>
-        id: <span style={{ fontWeight: 'lighter' }}>{id}</span>
-      </span>
-      <span style={{ fontWeight: 'bold' }}>
         name: <span style={{ fontWeight: 'lighter' }}>{name}</span>
       </span>
       <span style={{ fontWeight: 'bold' }}>

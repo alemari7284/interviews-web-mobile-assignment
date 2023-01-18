@@ -77,6 +77,8 @@ function ResultPage() {
         <h1>No results</h1>
       )}
       <div className="pagination">
+        {/* FIX: DA AGGIUSTARE IL CLICK SULLA FRECCIA DX QUANDO CI SI 
+        TROVA NELLA PRIMA PAGINA DEI RISULTATI. L'APP CRASHA */}
         <Pagination
           count={matrix.length}
           defaultPage={1}
