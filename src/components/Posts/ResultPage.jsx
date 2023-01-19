@@ -61,9 +61,6 @@ function ResultPage() {
     }
   }
 
-  /* FIX: Quando vengono mostrati i commenti di un post, e poi si clicca su un altro
-     Button di un altro post, il  primo click non sortisce effetti
-  */
   function handleClick(i) {
     if (!showComments) {
       setClicked(refs.current[i])
