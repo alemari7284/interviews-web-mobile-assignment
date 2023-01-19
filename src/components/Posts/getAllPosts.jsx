@@ -4,11 +4,14 @@ import { useState, useEffect } from 'react'
 import { Button } from '@mui/material'
 import { MAX_TILES } from '../../constants'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../Loading/loading'
 
 function GetAllPosts() {
   const [posts, setPosts] = useState([])
   const [error, setError] = useState()
   const [matrix, setMatrix] = useState([])
+  const [loading, setLoading] = useState(false)
+
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -20,7 +23,7 @@ function GetAllPosts() {
   useEffect(() => {
     !error &&
       matrix.length > 0 &&
-      navigate('/getallposts/1', { state: { matrix, error } })
+      navigate('/getallposts/1', { state: { matrix, error, loading } })
   }, [matrix])
 
   function divideIntoPages() {
@@ -49,6 +52,7 @@ function GetAllPosts() {
   }
 
   async function getMultiple() {
+    setLoading(true)
     if (posts.length === 0) {
       try {
         const array = await axios.get(
@@ -68,6 +72,7 @@ function GetAllPosts() {
       <Button variant="contained" onClick={getHandler}>
         GET
       </Button>
+      {loading && <Loading />}
     </div>
   )
 }

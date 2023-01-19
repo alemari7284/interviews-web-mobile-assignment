@@ -17,7 +17,6 @@ function ResultPage() {
   const [showComments, setShowComments] = useState(true)
   const [loading, setLoading] = useState(false)
   const [clicked, setClicked] = useState()
-  const [disabled, setDisabled] = useState(false)
 
   const { matrix, error } = location.state
   const refs = useRef([])
