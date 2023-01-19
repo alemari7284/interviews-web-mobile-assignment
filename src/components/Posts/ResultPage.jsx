@@ -16,10 +16,22 @@ function ResultPage() {
   const [comments, setComments] = useState()
   const [showComments, setShowComments] = useState(true)
   const [loading, setLoading] = useState(false)
-  const [click, setClick] = useState()
+  const [clicked, setClicked] = useState()
+  const [disabled, setDisabled] = useState(false)
 
   const { matrix, error } = location.state
   const refs = useRef([])
+  useEffect(() => {
+    console.log(refs)
+    if (clicked) {
+      console.log('clicked', clicked)
+      for (let el of refs.current) {
+        if (el !== clicked) {
+          console.log('el', el)
+        }
+      }
+    }
+  }, [clicked])
 
   useEffect(() => {
     setLoading(false)
@@ -54,7 +66,7 @@ function ResultPage() {
   */
   function handleClick(i) {
     if (!showComments) {
-      setClick(refs.current[i])
+      setClicked(refs.current[i])
       fetchComments(i)
     } else {
       setShowComments(!showComments)
@@ -76,13 +88,16 @@ function ResultPage() {
                     <Button
                       variant="contained"
                       ref={(el) => (refs.current[i] = el)}
+                      disabled={
+                        clicked && showComments && refs.current[i] !== clicked
+                      }
                       onClick={() => {
                         handleClick(i)
                       }}
                     >
                       Comments
                     </Button>
-                    {loading && click == refs.current[i] && <Loading />}
+                    {loading && clicked == refs.current[i] && <Loading />}
                     {comments &&
                       comments[0]?.postId === increasedId &&
                       showComments && <CommentsCard data={comments} />}

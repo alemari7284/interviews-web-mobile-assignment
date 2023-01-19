@@ -119,10 +119,6 @@
   padding: 1rem;
 }
 
-.postCard:hover {
-  outline: 1px solid orange;
-}
-
 .commentsCard {
   width: 16rem;
   border-radius: 10px;
