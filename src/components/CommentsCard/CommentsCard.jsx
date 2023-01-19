@@ -1,21 +1,29 @@
 import React from 'react'
+import { useEffect } from 'react'
 
 function CommentsCard({ data }) {
-  const { postId, id, name, email, body } = data
   return (
-    <div className="commentsCard">
-      <span style={{ fontWeight: 'bold' }}>
-        postID: <span style={{ fontWeight: 'lighter' }}>#{postId}</span>
-      </span>
-      <span style={{ fontWeight: 'bold' }}>
-        name: <span style={{ fontWeight: 'lighter' }}>{name}</span>
-      </span>
-      <span style={{ fontWeight: 'bold' }}>
-        email: <span style={{ fontWeight: 'lighter' }}>{email}</span>
-      </span>
-      <span style={{ fontWeight: 'bold' }}>
-        body: <span style={{ fontWeight: 'lighter' }}>{body}</span>
-      </span>
+    <div>
+      {data.map((comment, i) => {
+        const { name, email, body } = comment
+        return (
+          <div key={i} className="commentsCard">
+            #{i + 1}
+            <span className="commentFieldName">
+              name:
+              <span className="commentField">{name}</span>
+            </span>
+            <span className="commentFieldName">
+              email:
+              <span className="commentField">{email}</span>
+            </span>
+            <span className="commentFieldName">
+              body:
+              <span className="commentField">{body}</span>
+            </span>
+          </div>
+        )
+      })}
     </div>
   )
 }

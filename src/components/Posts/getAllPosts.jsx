@@ -18,7 +18,6 @@ function GetAllPosts() {
   }, [posts])
 
   useEffect(() => {
-    console.log(matrix)
     !error &&
       matrix.length > 0 &&
       navigate('/getallposts/1', { state: { matrix, error } })

@@ -1,11 +1,12 @@
 import React from 'react'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
-import { Pagination } from '@mui/material'
-import { useState, useEffect } from 'react'
+import { Button, Pagination } from '@mui/material'
+import { useState, useEffect, useRef } from 'react'
 import PostCard from '../PostCard/postCard'
 import { Grid } from '@mui/material'
-import CommentsModal from '../Modal/CommentsModal'
 import axios from 'axios'
+import CommentsCard from '../CommentsCard/CommentsCard'
+import Loading from '../Loading/loading'
 
 function ResultPage() {
   let { pageNumber } = useParams()
@@ -13,61 +14,78 @@ function ResultPage() {
   let navigate = useNavigate()
   const [page, setPage] = useState(pageNumber)
   const [comments, setComments] = useState()
+  const [showComments, setShowComments] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [click, setClick] = useState()
+
   const { matrix, error } = location.state
+  const refs = useRef([])
+
+  useEffect(() => {
+    setLoading(false)
+    setShowComments(!showComments)
+  }, [comments])
 
   useEffect(() => {
     console.log(page)
     navigate(`/getallposts/${page}`, { state: { matrix } })
   }, [page])
 
-  useEffect(() => {
-    console.log(comments)
-  }, [comments])
-
   const handleChange = (event, value) => {
     setPage(value)
   }
 
-  const getComments = async (id) => {
+  async function fetchComments(id) {
+    id += 1
+    setLoading(true)
     try {
       const call = await axios.get(
-        `https://jsonplaceholder.typicode.com/posts/${id + 1}/comments`,
+        `https://jsonplaceholder.typicode.com/posts/${id}/comments`,
       )
-      console.log(call)
+      console.log('call', call)
       setComments(call.data)
-      openModal()
     } catch (error) {
       console.log(error)
     }
   }
 
-  const openModal = () => {
-    var modal = document.getElementById('myModal')
-    var span = document.getElementsByClassName('close')[0]
-    modal.style.display = 'block'
-    span.onclick = function () {
-      modal.style.display = 'none'
-    }
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = 'none'
-      }
+  /* FIX: Quando vengono mostrati i commenti di un post, e poi si clicca su un altro
+     Button di un altro post, il  primo click non sortisce effetti
+  */
+  function handleClick(i) {
+    if (!showComments) {
+      setClick(refs.current[i])
+      fetchComments(i)
+    } else {
+      setShowComments(!showComments)
     }
   }
 
   return (
     <div className="content">
       <h1>All Posts</h1>
-      {/*FIX: DA AGGIUSTARE IL FATTO CHE BISOGNA FARE DOPPIO CLICK LA PRIMA VOLTA */}
-      {comments && <CommentsModal comments={comments} />}
       {!error ? (
         <Grid container rowSpacing={2}>
           {matrix.length > 0 &&
             matrix[pageNumber - 1].map((post, i) => {
+              let increasedId = i + 1
               return (
                 <Grid key={i} item xs={12} sm={8} md={6} lg={4} xl={3}>
-                  <div onClick={() => getComments(i)}>
+                  <div className="pcContainer">
                     <PostCard post={post} />
+                    <Button
+                      variant="contained"
+                      ref={(el) => (refs.current[i] = el)}
+                      onClick={() => {
+                        handleClick(i)
+                      }}
+                    >
+                      Comments
+                    </Button>
+                    {loading && click == refs.current[i] && <Loading />}
+                    {comments &&
+                      comments[0]?.postId === increasedId &&
+                      showComments && <CommentsCard data={comments} />}
                   </div>
                 </Grid>
               )

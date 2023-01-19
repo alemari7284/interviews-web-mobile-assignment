@@ -1,7 +1,7 @@
 import React from 'react'
 import { CircularProgress } from '@mui/material'
 
-function Loading() {
+function Loading({ index }) {
   return (
     <div className="loading">
       <CircularProgress style={{ textAlign: 'center' }} />

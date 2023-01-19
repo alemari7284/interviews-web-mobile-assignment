@@ -72,6 +72,13 @@
   margin-left: 1em;
 }
 
+.pcContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .singleSearchbar {
   padding: 15px;
 }
@@ -118,16 +125,24 @@
 
 .commentsCard {
   width: 16rem;
-  height: 10rem;
   border-radius: 10px;
   box-shadow: 3px 3px 3px gray;
   background-color: rgb(232, 239, 241);
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
   align-items: flex-start;
+  text-align: left;
   overflow-y: auto;
   padding: 1rem;
+}
+
+.commentFieldName {
+  font-weight: bold;
+}
+
+.commentField {
+  font-weight: normal;
 }
 
 .pagination {
