@@ -23,7 +23,16 @@ function Sidebar({ getMultiple, getOne, getOneAndUpdate }) {
       </button>
       <button
         className="btn"
-        id="button1"
+        id="button2"
+        onClick={() => {
+          navigate('/createnewpost')
+        }}
+      >
+        Create new post
+      </button>
+      <button
+        className="btn"
+        id="button3"
         onClick={() => {
           navigate('/getallposts')
         }}
@@ -32,14 +41,14 @@ function Sidebar({ getMultiple, getOne, getOneAndUpdate }) {
       </button>
       <button
         className="btn"
-        id="button2"
+        id="button4"
         onClick={() => navigate('/getsinglepost')}
       >
         Get/Update one post
       </button>
       <button
         className="btn"
-        id="button4"
+        id="button5"
         onClick={() => navigate('/deletepost')}
       >
         Delete one post

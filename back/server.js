@@ -1,5 +1,4 @@
 const express = require('express')
-const cors = require('cors')
 const app = express()
 
 const mongoose = require('mongoose')
@@ -20,7 +19,6 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model('Post', postSchema)
 app.use(express.json())
-app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('hello world!')

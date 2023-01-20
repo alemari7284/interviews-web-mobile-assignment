@@ -7,7 +7,6 @@
 }
 
 .posts {
-  /* max-width: 50rem; */
   max-height: 20rem;
   overflow-y: scroll;
 }
@@ -213,8 +212,18 @@
     height: 12rem;
   }
 
+  .commentsCard {
+    width: 12rem;
+  }
+
   .pcEditor {
     flex-direction: column;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .myButton svg {
+    height: 1.5em;
   }
 }
 
@@ -223,16 +232,14 @@
     width: 8rem;
     height: 18rem;
   }
+  .commentsCard {
+    width: 8rem;
+  }
 }
 
-@media all and (max-width: 440px) {
-  .myButton svg {
-    height: 1.5em;
-  }
-
-  @media all and (max-width: 293px) {
-    .postCard {
-      width: 7em;
-    }
+@media all and (max-width: 293px) {
+  .postCard,
+  .commentsCard {
+    width: 7em;
   }
 }

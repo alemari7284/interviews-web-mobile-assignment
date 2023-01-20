@@ -1,28 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TextField } from '@mui/material'
 import { Button } from '@mui/material'
 import axios from 'axios'
 
-function Modal({
-  post,
-  setPost,
-  newTitle,
-  setNewTitle,
-  newBody,
-  setNewBody,
-  response,
-  setResponse,
-}) {
+function Modal({ post, setPost, response, setResponse }) {
   // FIX: DA AGGIUSTARE QUANDO SI FANNO MODIFICHE MULTIPLE IN SERIE
+  const initialValue = { title: '', body: '' }
+  const [object, setObject] = useState(initialValue)
+
+  useEffect(() => {
+    console.log('post', post)
+    return () => {
+      console.log('cleanupModal')
+      setObject(initialValue)
+      setResponse()
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log(object)
+  }, [object])
 
   const handleSubmit = async () => {
-    const { title, body } = post
-
-    const object = {
-      ...post,
-      title: newTitle ? newTitle : title,
-      body: newBody ? newBody : body,
-    }
     setPost(object)
 
     try {
@@ -49,28 +48,32 @@ function Modal({
             label="Enter title"
             variant="outlined"
             className="modalTitle"
-            onChange={(e) => setNewTitle(e.currentTarget.value)}
+            onChange={(e) =>
+              setObject({ ...object, title: e.currentTarget.value })
+            }
           />
         )}
         {post && (
           <TextField
             fullWidth
-            defaultValue={post.body}
+            defaultValue={post ? post.body : ''}
             type={'text'}
             label="Enter body"
             variant="outlined"
             className="modalBody"
-            onChange={(e) => setNewBody(e.currentTarget.value)}
+            onChange={(e) =>
+              setObject({ ...object, body: e.currentTarget.value })
+            }
           />
         )}
         <Button
           variant="contained"
           onClick={handleSubmit}
-          disabled={!newTitle && !newBody}
+          disabled={!object?.title && !object?.body}
         >
           SUBMIT
         </Button>
-        {response && <h4>Changes submitted successfully</h4>}
+        {response && <h3>Changes submitted successfully</h3>}
       </div>
     </div>
   )
