@@ -39,6 +39,7 @@ function Modal({ post, setPost, response, setResponse }) {
   return (
     <div id="myModal" class="modal">
       <div class="modalContent">
+        <h3 style={{ textAlign: 'center' }}>Update this post</h3>
         <span class="close">&times;</span>
         {post && (
           <TextField
@@ -49,7 +50,12 @@ function Modal({ post, setPost, response, setResponse }) {
             variant="outlined"
             className="modalTitle"
             onChange={(e) =>
-              setObject({ ...object, title: e.currentTarget.value })
+              setObject({
+                id: post.id,
+                userId: post.userId,
+                title: e.currentTarget.value,
+                body: object.body ? object.body : post.body,
+              })
             }
           />
         )}
@@ -62,7 +68,12 @@ function Modal({ post, setPost, response, setResponse }) {
             variant="outlined"
             className="modalBody"
             onChange={(e) =>
-              setObject({ ...object, body: e.currentTarget.value })
+              setObject({
+                id: post.id,
+                userId: post.userId,
+                title: object.title ? object.title : post.title,
+                body: e.currentTarget.value,
+              })
             }
           />
         )}

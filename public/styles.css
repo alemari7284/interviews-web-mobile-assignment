@@ -146,6 +146,29 @@
   margin-top: 2em;
 }
 
+.yesNo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yesNo button {
+  margin: 0 6px 10px 6px;
+}
+
+.choiceWrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error {
+  color: red;
+  text-decoration: underline;
+}
+
 .modal {
   display: none;
   position: fixed;

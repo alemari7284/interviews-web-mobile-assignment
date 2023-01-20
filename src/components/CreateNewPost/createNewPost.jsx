@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Button, TextField } from '@mui/material'
 import Loading from '../Loading/loading'
 import axios from 'axios'
+import { FormControl } from '@mui/material'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 function CreateNewPost() {
   const [object, setObject] = useState()
@@ -12,7 +16,21 @@ function CreateNewPost() {
     console.log(object)
   }, [object])
 
-  const handleSubmit = async () => {
+  const schema = yup.object({
+    userId: yup.number().required(),
+    title: yup.string().min(4).required(),
+    body: yup.string().min(4).required(),
+  })
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  })
+
+  const onSubmit = async () => {
     setLoading(true)
     try {
       const call = await axios.post(
@@ -31,44 +49,59 @@ function CreateNewPost() {
   return (
     <div className="content">
       <h1>Create new post</h1>
-      <div>
-        <TextField
-          type={'number'}
-          label="Enter userId"
-          variant="outlined"
-          className="modalTitle"
-          onChange={(e) =>
-            setObject({ ...object, userId: e.currentTarget.value })
-          }
-        />
-      </div>
-      <div>
-        <TextField
-          type={'text'}
-          label="Enter title"
-          variant="outlined"
-          className="modalTitle"
-          onChange={(e) =>
-            setObject({ ...object, title: e.currentTarget.value })
-          }
-        />
-      </div>
-      <div>
-        <TextField
-          type={'text'}
-          label="Enter body"
-          variant="outlined"
-          className="modalTitle"
-          onChange={(e) =>
-            setObject({ ...object, body: e.currentTarget.value })
-          }
-        />
-      </div>
-      <Button variant="contained" onClick={handleSubmit}>
-        SUBMIT
-      </Button>
-      {loading && <Loading />}
-      {response && <h2>Post #{response?.id} successfully submitted</h2>}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <TextField
+            name="userId"
+            id="userId"
+            type={'number'}
+            autoFocus
+            label="Enter userId"
+            variant="outlined"
+            className="modalTitle"
+            {...register('userId')}
+            onChange={(e) =>
+              setObject({ ...object, userId: e.currentTarget.value })
+            }
+          />
+          <p className="error">{errors.userId?.message}</p>
+        </div>
+        <div>
+          <TextField
+            name="title"
+            id="title"
+            type={'text'}
+            label="Enter title"
+            variant="outlined"
+            className="modalTitle"
+            {...register('title')}
+            onChange={(e) =>
+              setObject({ ...object, title: e.currentTarget.value })
+            }
+          />
+          <p className="error">{errors.title?.message}</p>
+        </div>
+        <div>
+          <TextField
+            name="body"
+            id="body"
+            type={'text'}
+            label="Enter body"
+            variant="outlined"
+            className="modalTitle"
+            {...register('body')}
+            onChange={(e) =>
+              setObject({ ...object, body: e.currentTarget.value })
+            }
+          />
+          <p className="error">{errors.body?.message}</p>
+        </div>
+        <Button variant="contained" type="submit">
+          SUBMIT
+        </Button>
+        {loading && <Loading />}
+        {response && <h2>Post #{response?.id} successfully submitted</h2>}
+      </form>
     </div>
   )
 }
