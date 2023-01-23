@@ -22,14 +22,8 @@ function ResultPage() {
   const refs = useRef([])
 
   useEffect(() => {
-    console.log('matrix', matrix)
+    console.log('pageNumber', pageNumber)
   }, [])
-
-  useEffect(() => {
-    if (performance.navigation.type === 1) {
-      navigate('/')
-    }
-  })
 
   useEffect(() => {
     setLoading(false)
@@ -41,6 +35,7 @@ function ResultPage() {
   }, [page])
 
   const handleChange = (event, value) => {
+    console.log('value', value)
     setPage(value)
   }
 

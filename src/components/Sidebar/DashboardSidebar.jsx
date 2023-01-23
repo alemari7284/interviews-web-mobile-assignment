@@ -9,7 +9,7 @@ function DashboardSidebar() {
     <>
       <nav className="dashSidebar">
         <ul>
-          <li className="logo">
+          <li>
             <a className="logo">
               <img src={logo} width={'150px'} height={'150px'} alt="" />
               <span className="nav-item">Xtream APP</span>
