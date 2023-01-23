@@ -10,7 +10,6 @@ function SingleSearchbar({ getOne, setError }) {
 
   function handleClick() {
     const id = cmp.current.lastChild.firstChild.value
-    console.log(id)
     if (id) {
       getOne(id)
     } else {

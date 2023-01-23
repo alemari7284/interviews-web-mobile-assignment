@@ -15,10 +15,6 @@ function GetSinglePost() {
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
-    console.log(error)
-  }, [error])
-
-  useEffect(() => {
     if (showModal) openModal()
   }, [showModal])
 
@@ -39,7 +35,6 @@ function GetSinglePost() {
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         // modal.style.display = 'none'
-        console.log('escape!')
         setShowModal(false)
       }
     })

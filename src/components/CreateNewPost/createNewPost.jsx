@@ -12,10 +12,6 @@ function CreateNewPost() {
   const [response, setResponse] = useState()
   const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    console.log(object)
-  }, [object])
-
   const schema = yup.object({
     userId: yup.number().required(),
     title: yup.string().min(4).required(),

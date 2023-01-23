@@ -26,7 +26,6 @@ app.get('/', (req, res) => {
 
 app.get('/search/:id', async (req, res) => {
   const n = req.params['id']
-  console.log(n)
   let posts
   try {
     n

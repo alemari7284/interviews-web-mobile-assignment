@@ -4,22 +4,16 @@ import { Button } from '@mui/material'
 import axios from 'axios'
 
 function Modal({ post, setPost, response, setResponse }) {
-  // FIX: DA AGGIUSTARE QUANDO SI FANNO MODIFICHE MULTIPLE IN SERIE
   const initialValue = { title: '', body: '' }
   const [object, setObject] = useState(initialValue)
 
   useEffect(() => {
-    console.log('post', post)
     return () => {
       console.log('cleanupModal')
       setObject(initialValue)
       setResponse()
     }
   }, [])
-
-  useEffect(() => {
-    console.log(object)
-  }, [object])
 
   const handleSubmit = async () => {
     setPost(object)

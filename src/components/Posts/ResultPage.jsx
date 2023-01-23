@@ -20,17 +20,6 @@ function ResultPage() {
 
   const { matrix, error } = location.state
   const refs = useRef([])
-  useEffect(() => {
-    console.log(refs)
-    if (clicked) {
-      console.log('clicked', clicked)
-      for (let el of refs.current) {
-        if (el !== clicked) {
-          console.log('el', el)
-        }
-      }
-    }
-  }, [clicked])
 
   useEffect(() => {
     setLoading(false)
@@ -38,7 +27,6 @@ function ResultPage() {
   }, [comments])
 
   useEffect(() => {
-    console.log(page)
     navigate(`/getallposts/${page}`, { state: { matrix } })
   }, [page])
 

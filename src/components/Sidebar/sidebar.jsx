@@ -1,13 +1,7 @@
 import React from 'react'
-import { useState } from 'react'
-import SingleSearchbar from '../SingleSearchbar/singleSearchbar'
 import { useNavigate } from 'react-router-dom'
 
 function Sidebar({ getMultiple, getOne, getOneAndUpdate }) {
-  const [findOne, setFindOne] = useState(false)
-  const [showFindUpdate, setShowFindUpdate] = useState(false)
-  const [deleteOne, setDeleteOne] = useState(false)
-  const [createOne, setCreateOne] = useState(false)
   let navigate = useNavigate()
 
   return (

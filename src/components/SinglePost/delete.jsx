@@ -26,7 +26,6 @@ function Delete() {
       const post = await axios.get(
         `https://jsonplaceholder.typicode.com/posts/${id}`,
       )
-      console.log(post)
       if (post.data) {
         setLoading(false)
         setPost(post.data)
@@ -57,7 +56,6 @@ function Delete() {
   function openModal() {
     var modal = document.getElementById('delModal')
     var span = document.getElementsByClassName('close')[0]
-    console.log(modal)
     modal.style.display = 'block'
     span.onclick = function () {
       // modal.style.display = 'none'
@@ -71,7 +69,6 @@ function Delete() {
     }
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        console.log('escape!')
         setShowModal(false)
       }
     })
