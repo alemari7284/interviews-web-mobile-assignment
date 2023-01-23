@@ -39,18 +39,20 @@ function GetSinglePost() {
       }
     })
   }
+  // `https://jsonplaceholder.typicode.com/posts/${id}`,
 
   async function getOne(id) {
     setLoading(true)
     setError(false)
     try {
-      const post = await axios.get(
-        `https://jsonplaceholder.typicode.com/posts/${id}`,
-      )
+      const post = await axios.get(`http://localhost:8080/search/${id}`)
       console.log(post)
-      if (post.data) {
+      if (post.data?.length > 0) {
         setLoading(false)
-        setPost(post.data)
+        setPost(post.data[0])
+      } else {
+        setError({ message: 'Nothing was found' })
+        setLoading(false)
       }
     } catch (error) {
       setError(error.response.status)

@@ -22,6 +22,10 @@ function ResultPage() {
   const refs = useRef([])
 
   useEffect(() => {
+    console.log('matrix', matrix)
+  }, [])
+
+  useEffect(() => {
     if (performance.navigation.type === 1) {
       navigate('/')
     }

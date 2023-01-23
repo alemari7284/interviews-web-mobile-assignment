@@ -9,6 +9,7 @@ function SingleSearchbar({ getOne, setError }) {
   const cmp = useRef()
 
   function handleClick() {
+    console.log('cerca')
     const id = cmp.current.lastChild.firstChild.value
     if (id) {
       getOne(id)

@@ -2,6 +2,7 @@ import React from 'react'
 import DeleteButton from '../MyButton/DeleteButton'
 
 function PostCard({ post }) {
+  console.log('dai cazzo', post)
   return (
     <div className="postCard">
       <span className="postIdText">#{post.id}</span>

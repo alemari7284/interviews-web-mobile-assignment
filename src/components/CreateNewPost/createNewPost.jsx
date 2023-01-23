@@ -29,10 +29,7 @@ function CreateNewPost() {
   const onSubmit = async () => {
     setLoading(true)
     try {
-      const call = await axios.post(
-        'https://jsonplaceholder.typicode.com/posts',
-        object,
-      )
+      const call = await axios.post('http://localhost:8080/add/', object)
       console.log(call)
       setResponse(call.data)
       setLoading(false)

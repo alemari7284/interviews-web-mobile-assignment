@@ -23,12 +23,14 @@ function Delete() {
     setLoading(true)
     setError(false)
     try {
-      const post = await axios.get(
-        `https://jsonplaceholder.typicode.com/posts/${id}`,
-      )
-      if (post.data) {
+      const post = await axios.get(`http://localhost:8080/search/${id}`)
+      console.log(post)
+      if (post.data?.length > 0) {
         setLoading(false)
-        setPost(post.data)
+        setPost(post.data[0])
+      } else {
+        setError({ message: 'Nothing was found' })
+        setLoading(false)
       }
     } catch (error) {
       setError(error.response.status)
@@ -41,11 +43,12 @@ function Delete() {
     setError(false)
     try {
       const del = await axios.delete(
-        `https://jsonplaceholder.typicode.com/posts/${post.id}`,
+        // `https://jsonplaceholder.typicode.com/posts/${post.id}`,
+        `http://localhost:8080/delete/${post.id}`,
       )
       console.log(del)
       setLoading(false)
-      setPost({ message: `post #${post.id} succesfully deleted` })
+      setPost({ message: `post #${post.id} successfully deleted` })
       setShowModal(false)
     } catch (error) {
       setError(error.response)

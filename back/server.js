@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 const mongoose = require('mongoose')
@@ -19,7 +20,7 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model('Post', postSchema)
 app.use(express.json())
-
+app.use(cors())
 app.get('/', (req, res) => {
   res.send('hello world!')
 })
@@ -28,9 +29,18 @@ app.get('/search/:id', async (req, res) => {
   const n = req.params['id']
   let posts
   try {
-    n
-      ? (posts = await Post.find({ id: n }).select('userId id title body'))
-      : (posts = await Post.find())
+    posts = await Post.find({ id: n }).select('userId id title body')
+    return res.status(200).send(posts)
+  } catch (error) {
+    console.log(error.message)
+    return res.send(error)
+  }
+})
+
+app.get('/search/', async (req, res) => {
+  let posts
+  try {
+    posts = await Post.find()
     return res.status(200).send(posts)
   } catch (error) {
     console.log(error.message)

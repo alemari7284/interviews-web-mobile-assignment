@@ -15,8 +15,13 @@ function GetAllPosts() {
   let navigate = useNavigate()
 
   useEffect(() => {
+    console.log(posts.length)
+    console.log(posts.length > MAX_TILES)
+
     if (posts.length > MAX_TILES) {
       divideIntoPages()
+    } else if (posts.length > 0) {
+      setMatrix([posts])
     }
   }, [posts])
 
@@ -51,13 +56,12 @@ function GetAllPosts() {
     getMultiple()
   }
 
+  // 'https://jsonplaceholder.typicode.com/posts',
   async function getMultiple() {
     setLoading(true)
     if (posts.length === 0) {
       try {
-        const array = await axios.get(
-          'https://jsonplaceholder.typicode.com/posts',
-        )
+        const array = await axios.get('http://localhost:8080/search/')
         setPosts(array.data)
       } catch (error) {
         console.log(error)

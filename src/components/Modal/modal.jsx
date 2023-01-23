@@ -20,7 +20,7 @@ function Modal({ post, setPost, response, setResponse }) {
 
     try {
       const result = await axios.put(
-        `https://jsonplaceholder.typicode.com/posts/${post.id}`,
+        `http://localhost:8080/update/${post.id}`,
         object,
       )
       console.log(result)
