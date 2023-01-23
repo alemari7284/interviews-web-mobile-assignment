@@ -7,7 +7,8 @@ function PostCard({ post }) {
       <span className="postIdText">#{post.id}</span>
       <h4>{post.title}</h4>
       <p>{post.body}</p>
-      <span className="credits">Written by user #{post.userId}</span>
+      <hr />
+      <span className="credits">user #{post.userId}</span>
     </div>
   )
 }

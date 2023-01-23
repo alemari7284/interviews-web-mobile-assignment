@@ -22,6 +22,12 @@ function ResultPage() {
   const refs = useRef([])
 
   useEffect(() => {
+    if (performance.navigation.type === 1) {
+      navigate('/')
+    }
+  })
+
+  useEffect(() => {
     setLoading(false)
     setShowComments(!showComments)
   }, [comments])
@@ -59,7 +65,7 @@ function ResultPage() {
 
   return (
     <div className="content">
-      <h1>All Posts</h1>
+      <h1 className="title">All Posts</h1>
       {!error ? (
         <Grid container rowSpacing={2}>
           {matrix.length > 0 &&

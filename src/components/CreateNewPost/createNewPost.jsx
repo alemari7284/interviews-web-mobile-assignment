@@ -44,7 +44,7 @@ function CreateNewPost() {
 
   return (
     <div className="content">
-      <h1>Create new post</h1>
+      <h1 className="title">Create new post</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <TextField

@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../Sidebar/sidebar'
 import DashboardSidebar from '../Sidebar/DashboardSidebar'
+import Modal from '../Modal/modal'
 
 const withSidebar = (WrappedComponent) => {
   return (props) => {

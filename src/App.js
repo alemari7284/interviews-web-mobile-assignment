@@ -16,9 +16,6 @@ function App() {
   const ResultPageWS = withSidebar(ResultPage)
   const CreateNewPostWS = withSidebar(CreateNewPost)
 
-  // FIX: ci sono un pò di funzioni duplicate in qualche component, come 'getOne'
-  // FIX: se si aggiorna l'app in alcune route, si perde il CSS
-
   return (
     <Routes>
       <Route path="/" element={<HomeWS />} />

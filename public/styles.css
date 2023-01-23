@@ -13,6 +13,22 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.content {
+  margin: 20px 0 0 100px;
+  z-index: 2;
+  position: relative;
+}
+
+hr {
+  width: 100%;
+  border-width: 0;
+  background-color: black;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
 .wrapper {
   height: 100%;
   position: relative;
@@ -60,6 +76,7 @@
 
 .credits {
   text-align: right;
+  margin-left: auto;
 }
 
 .postIdText input {
@@ -67,10 +84,6 @@
   height: 2rem;
   width: fit-content;
   max-width: 3rem;
-}
-
-.content {
-  margin: 20px 0 0 100px;
 }
 
 .pcEditor {
@@ -100,6 +113,7 @@
 
 .myButton svg {
   height: 3em;
+  transform: scale(0.5);
 }
 
 .deleteButton {
@@ -128,6 +142,10 @@
   align-items: flex-start;
   overflow-y: auto;
   padding: 1rem;
+}
+
+.postCard p {
+  border-bottom: 1px solid black;
 }
 
 .commentsCard {
@@ -184,7 +202,7 @@
 .modal {
   display: none;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -224,25 +242,28 @@
   cursor: pointer;
 }
 
-/* +++ Dashboard sidebar */
+/* ++++++++++++++++++++++ Dashboard sidebar ++++++++++++++++++++++ */
 
 .dashSidebar {
-  position: absolute;
+  position: fixed;
+  opacity: 1;
   top: 0;
   bottom: 0;
   min-height: 100vh;
   height: 100%;
   left: 0;
-  background: #fff1;
+  background: white;
   width: 90px;
   overflow: hidden;
-  transition: width 0.2s linear;
+  transition: width 0.3s, z-index 0.1s ease-out;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
+
 .logo {
   text-align: center;
   display: flex;
-  transition: all 0.5s ease;
+  /* transition: all 0.5s ease; */
   margin: 10px 0 0 10px;
 }
 .logo img {
@@ -283,16 +304,16 @@ a:hover {
 }
 .dashSidebar:hover {
   width: 280px;
-  transition: all 0.5s ease;
+  z-index: 3;
 }
-.dashSidebar:hover ~ .content {
+/* .dashSidebar:hover ~ .content {
   transform: translateX(200px);
   transition: all 0.5s ease;
 }
 .dashSidebar:not(:hover) ~ .content {
   transform: translateX(0px);
   transition: all 0.5s ease;
-}
+} */
 
 /* --- Dashboard sidebar */
 

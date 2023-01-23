@@ -76,7 +76,7 @@ function Delete() {
 
   return (
     <div className="content">
-      <h1>Delete one post</h1>
+      <h1 className="title">Delete one post</h1>
       <SingleSearchbar getOne={getOne} setError={setError} />
       {showModal && (
         <DeleteModal

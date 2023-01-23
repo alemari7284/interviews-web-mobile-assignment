@@ -68,7 +68,7 @@ function GetAllPosts() {
 
   return (
     <div className="content">
-      <h1>All Posts</h1>
+      <h1 className="title">All Posts</h1>
       <Button variant="contained" onClick={getHandler}>
         GET
       </Button>

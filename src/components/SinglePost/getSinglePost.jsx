@@ -59,7 +59,7 @@ function GetSinglePost() {
   }
   return (
     <div className="content">
-      <h1>Get/Update one post</h1>
+      <h1 className="title">Get/Update one post</h1>
       {showModal && (
         <Modal
           post={post}
