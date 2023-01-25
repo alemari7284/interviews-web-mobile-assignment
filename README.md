@@ -3,6 +3,7 @@ Hi! We're happy you opened this file, not everyone does!
 To let us know you did, paste a capybara picture 
 in the How to Run section 😊 
 -->
+![xtream](https://user-images.githubusercontent.com/15859169/214474707-b2a7cd6a-4daa-4d6a-be20-cf4cbc76f1f0.gif)
 
 # Web & Mobile Interview Assignment
 
